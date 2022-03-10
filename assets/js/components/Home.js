@@ -28,14 +28,14 @@ class Home extends Component {
                    </div>
                </nav>
                <Routes>
-                   {/* <Redirect exact from="/" to="/users" /> */}                 
-                   <Route path="/" element={<Users />} />
+                   {/* <Redirect exact from="/" to="/users" />*/}
                    <Route path="/users" element={<Users />} />
                    <Route path="/posts" element={<Posts />} />
+                   
                </Routes>
            </>
         )
     }
 }
-    
+
 export default Home;
