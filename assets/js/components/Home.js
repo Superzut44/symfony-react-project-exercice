@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {
     Routes,
     Route,
-    Redirect,
-    Link
+    Link,
+    Navigate
 } from 'react-router-dom';
 import Users from './Users';
 import Posts from './Posts';
@@ -28,10 +28,9 @@ class Home extends Component {
                    </div>
                </nav>
                <Routes>
-                   {/* <Redirect exact from="/" to="/users" />*/}
                    <Route path="/users" element={<Users />} />
                    <Route path="/posts" element={<Posts />} />
-                   
+                   <Route path="/" element={<Navigate replace to="/users" />} />
                </Routes>
            </>
         )
