@@ -1,20 +1,20 @@
 import React, {Component} from 'react';
 import axios from 'axios';
     
-class Users extends Component {
+class Clients extends Component {
     constructor() {
         super();
-        this.state = { users: [], loading: true};
+        this.state = { clients: [], loading: true};
     }
     
     componentDidMount() {
-        this.getUsers();
+        this.getClients();
     }
     
-    getUsers() {
+    getClients() {
        axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
-       axios.get(`/users/api`).then(users => {
-           this.setState({ users: users.data, loading: false})
+       axios.get(`/api/clients`).then(clients => {
+           this.setState({ clients: clients.data, loading: false})
        })
     }
     
@@ -25,7 +25,7 @@ class Users extends Component {
                 <section className="row-section">
                     <div className="container">
                         <div className="row">
-                            <h2 className="text-center"><span>List of users</span>Created with <i
+                            <h2 className="text-center"><span>List of clients</span>Created with <i
                                 className="fa fa-heart"></i> by xav</h2>
                         </div>
                         {loading ? (
@@ -35,7 +35,7 @@ class Users extends Component {
                         ) : (
                             <div className={'row'}>
                                 <div className="col-md-10 offset-md-1 row-block">
-                                    <table striped bordered hover>
+                                    <table table-striped>
                                         <thead>
                                             <tr>
                                             <th>Name</th>
@@ -46,13 +46,13 @@ class Users extends Component {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        { this.state.users.map(user =>
-                                            <tr key={user.id}>
-                                            <td>{user.name}</td>
-                                            <td>{user.firstname}</td>
-                                            <td>{user.email}</td>
-                                            <td>{user.adress}</td>
-                                            <td>{user.phone}</td>
+                                        { this.state.clients.map(client =>
+                                            <tr key={client.id}>
+                                            <td>{client.name}</td>
+                                            <td>{client.firstname}</td>
+                                            <td>{client.email}</td>
+                                            <td>{client.adress}</td>
+                                            <td>{client.phone}</td>
                                             </tr>
                                         )}
                                         </tbody>
@@ -66,4 +66,4 @@ class Users extends Component {
         )
     }
 }
-export default Users;
+export default Clients;

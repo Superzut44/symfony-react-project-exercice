@@ -25,7 +25,7 @@ class DefaultController extends AbstractController
         $users = [
             [
                 'id' => 1,
-                'name' => 'Olususi Oluyemi',
+                'name' => 'getUsers',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation',
                 'imageURL' => 'https://randomuser.me/api/portraits/women/50.jpg'
             ],

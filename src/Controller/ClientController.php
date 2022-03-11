@@ -6,19 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/client', name: 'client')]
-class UserController extends AbstractController
-{
-    #[Route('/{reactRouting}', name: '_home', defaults: ["reactRouting" => null])]
-    public function index(): Response
-    {
-        return $this->render('client/index.html.twig', [
-            'controller_name' => 'Xav',
-        ]);
-    }
-
+class ClientController extends AbstractController
+{  
     /**
-     * @Route("/api", name="_api")
+     * @Route("api/clients", name="clients")
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
     public function getClients()

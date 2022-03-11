@@ -12,7 +12,6 @@ class Users extends Component {
     }
     
     getUsers() {
-       axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
        axios.get(`https://127.0.0.1:8000/api/users`).then(users => {
            this.setState({ users: users.data, loading: false})
        })
