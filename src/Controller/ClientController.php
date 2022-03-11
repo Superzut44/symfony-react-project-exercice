@@ -39,6 +39,22 @@ class ClientController extends AbstractController
                 'adress' => '13 lorem impsum 51000 Reims',
                 'phone' => '06-06-06-06-08'
             ],
+            [
+                'id' => 4,
+                'name' => 'Olususi Oluyemi2',
+                'firstname' => 'Lorem ipsum2',
+                'email' => 'lorem@ipsum.com2',
+                'adress' => '12 lorem impsum 51000 Reims',
+                'phone' => '06-06-06-06-07'
+            ],
+            [
+                'id' => 5,
+                'name' => 'Olususi Oluyemi3',
+                'firstname' => 'Lorem ipsum3',
+                'email' => 'lorem@ipsum.com3',
+                'adress' => '13 lorem impsum 51000 Reims',
+                'phone' => '06-06-06-06-08'
+            ],
         ];
     
         $response = new Response();
