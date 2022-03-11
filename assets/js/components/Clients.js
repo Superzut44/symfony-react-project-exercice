@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import { Table, Button } from 'react-bootstrap';
     
 class Clients extends Component {
     constructor() {
@@ -34,8 +35,8 @@ class Clients extends Component {
                             </div>
                         ) : (
                             <div className={'row'}>
-                                <div className="col-md-10 offset-md-1 row-block">
-                                    <table table-striped>
+                                <div className="col-lg offset-md-1 row-block">
+                                    <Table>
                                         <thead>
                                             <tr>
                                             <th>Name</th>
@@ -43,6 +44,7 @@ class Clients extends Component {
                                             <th>Email</th>
                                             <th>Adress</th>
                                             <th>Phone</th>
+                                            <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -53,10 +55,11 @@ class Clients extends Component {
                                             <td>{client.email}</td>
                                             <td>{client.adress}</td>
                                             <td>{client.phone}</td>
+                                            <td><Button as="input" type="reset" value="Reset" /></td>
                                             </tr>
                                         )}
                                         </tbody>
-                                    </table>
+                                    </Table>
                                 </div>
                             </div>
                         )}
