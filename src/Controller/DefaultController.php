@@ -17,12 +17,12 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/api/people", name="people")
+     * @Route("/api/users", name="users")
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function getPeople()
+    public function getUsers()
     {
-        $people = [
+        $users = [
             [
                 'id' => 1,
                 'name' => 'Olususi Oluyemi',
@@ -60,7 +60,7 @@ class DefaultController extends AbstractController
         $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');
 
-        $response->setContent(json_encode($people));
+        $response->setContent(json_encode($users));
         
         return $response;
     }

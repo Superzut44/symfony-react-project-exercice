@@ -6,14 +6,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/users', name: 'users')]
+#[Route('/client', name: 'client')]
 class UserController extends AbstractController
 {
     #[Route('/{reactRouting}', name: '_home', defaults: ["reactRouting" => null])]
     public function index(): Response
     {
-        return $this->render('default/index.html.twig', [
-            'controller_name' => 'UserController',
+        return $this->render('client/index.html.twig', [
+            'controller_name' => 'Xav',
         ]);
     }
 
@@ -21,9 +21,9 @@ class UserController extends AbstractController
      * @Route("/api", name="_api")
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function getUser()
+    public function getClients()
     {
-        $users = [
+        $clients = [
             [
                 'id' => 1,
                 'name' => 'Olususi Oluyemi',
@@ -55,7 +55,7 @@ class UserController extends AbstractController
         $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');
 
-        $response->setContent(json_encode($users));
+        $response->setContent(json_encode($clients));
         
         return $response;
     }

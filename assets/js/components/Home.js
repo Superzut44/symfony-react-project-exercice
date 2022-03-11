@@ -7,7 +7,6 @@ import {
 } from 'react-router-dom';
 import Users from './Users';
 import Posts from './Posts';
-import People from './People';
     
 class Home extends Component {
     
@@ -21,9 +20,7 @@ class Home extends Component {
                            <li className="nav-item">
                                <Link className={"nav-link"} to={"/posts"}> Posts </Link>
                            </li>
-                           <li className="nav-item">
-                               <Link className={"nav-link"} to={"/people"}> People </Link>
-                           </li>
+    
                            <li className="nav-item">
                                <Link className={"nav-link"} to={"/users"}> Users </Link>
                            </li>
@@ -33,8 +30,7 @@ class Home extends Component {
                <Routes>
                    <Route path="/users" element={<Users />} />
                    <Route path="/posts" element={<Posts />} />
-                   <Route path="/people" element={<People/>} />
-                   <Route path="/" element={<Navigate replace to="/people" />} />
+                   <Route path="/" element={<Navigate replace to="/users" />} />
                </Routes>
            </>
         )
