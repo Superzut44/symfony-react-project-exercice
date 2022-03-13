@@ -2,30 +2,37 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ClientRepository;
+use Symfony\Component\Serializer\Annotation\Groups;
 
-#[ORM\Entity(repositoryClass: UserRepository::class)]
+#[ORM\Entity(repositoryClass: ClientRepository::class)]
 class Client
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups(["client:read"])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 40)]
+    #[Groups(["client:read"])]
     private $name;
 
     #[ORM\Column(type: 'string', length: 40)]
+    #[Groups(["client:read"])]
     private $firstname;
 
     #[ORM\Column(type: 'string', length: 40)]
+    #[Groups(["client:read"])]
     private $email;
 
     #[ORM\Column(type: 'string', length: 40)]
+    #[Groups(["client:read"])]
     private $adress;
 
     #[ORM\Column(type: 'string', length: 40)]
+    #[Groups(["client:read"])]
     private $phone;
 
     public function getId(): ?int

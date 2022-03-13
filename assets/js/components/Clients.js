@@ -14,7 +14,7 @@ class Clients extends Component {
     
     getClients() {
        axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
-       axios.get(`/api/clients`).then(clients => {
+       axios.get(`/api/client`).then(clients => {
            this.setState({ clients: clients.data, loading: false})
        })
     }
