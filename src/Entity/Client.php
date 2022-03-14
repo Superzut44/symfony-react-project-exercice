@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ClientRepository;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -34,6 +36,14 @@ class Client
     #[ORM\Column(type: 'string', length: 40)]
     #[Groups(["client:read"])]
     private $phone;
+
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Possession::class)]
+    private $possessions;
+
+    public function __construct()
+    {
+        $this->possessions = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -96,6 +106,36 @@ class Client
     public function setPhone(string $phone): self
     {
         $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Possession>
+     */
+    public function getPossessions(): Collection
+    {
+        return $this->possessions;
+    }
+
+    public function addPossession(Possession $possession): self
+    {
+        if (!$this->possessions->contains($possession)) {
+            $this->possessions[] = $possession;
+            $possession->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removePossession(Possession $possession): self
+    {
+        if ($this->possessions->removeElement($possession)) {
+            // set the owning side to null (unless already changed)
+            if ($possession->getClient() === $this) {
+                $possession->setClient(null);
+            }
+        }
 
         return $this;
     }
