@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Client;
 use App\Repository\ClientRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -84,4 +87,19 @@ class ClientController extends AbstractController
     //     return $response;
     // }
 
+    #[Route('/api/client/delete/{id}', name: 'api_client_delete', methods: ['DELETE'])]
+    public function deleteClient(
+        Request $request,
+        Client $client,
+        EntityManagerInterface $entityManager,
+    ): Response {
+
+        $entityManager->remove($client);
+        $entityManager->flush();
+
+        $response = new Response();
+        $response->setStatusCode(200);
+
+        return $response;
+    }
 }

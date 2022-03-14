@@ -18,6 +18,18 @@ class Clients extends Component {
            this.setState({ clients: clients.data, loading: false})
        })
     }
+
+    deleteClientById(id, event) {
+        event.preventDefault();
+        axios.delete(`/api/client/delete/`+ id).then(res => {
+            this.getClients();
+            const clientsUpdate = $this.getState.clients.filter(client => client.id !== id);
+            $this.setState({clients: clientsUpdate});
+        })
+        .catch((error) => {
+            console.log(error.response)
+        });
+    }
     
     render() {
         const loading = this.state.loading;
@@ -55,7 +67,7 @@ class Clients extends Component {
                                             <td>{client.email}</td>
                                             <td>{client.adress}</td>
                                             <td>{client.phone}</td>
-                                            <td><Button as="input" type="reset" value="Reset" /></td>
+                                            <td><Button as="input" type="reset" value="Reset" onClick={(event) => this.deleteClientById(client.id, event)}/></td>
                                             </tr>
                                         )}
                                         </tbody>
