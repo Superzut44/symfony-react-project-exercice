@@ -1,13 +1,7 @@
 import React, {Component} from 'react';
 import {
-    Routes,
-    Route,
     Link,
-    Navigate
 } from 'react-router-dom';
-import Users from './Users';
-import Posts from './Posts';
-import Clients from './Clients';
     
 class Home extends Component {
     
@@ -30,12 +24,6 @@ class Home extends Component {
                        </ul>
                    </div>
                </nav>
-               <Routes>
-                   <Route path="/users" element={<Users />} />
-                   <Route path="/posts" element={<Posts />} />
-                   <Route path="/clients" element={<Clients />} />
-                   <Route path="/" element={<Navigate replace to="/users" />} />
-               </Routes>
            </>
         )
     }

@@ -102,4 +102,13 @@ class ClientController extends AbstractController
 
         return $response;
     }
+
+    #[Route('/client/{id}', name: 'client_show', methods: ['GET'])]
+    public function showClient(
+        Client $client,
+        ClientRepository $clientRepository
+    ): Response {
+
+        return $this->json($client, 200,[], ['groups' => 'client:read']);
+    }
 }

@@ -1,37 +1,22 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import { Table, Button } from 'react-bootstrap';
-import {
-    Link
-} from 'react-router-dom';
+import { Table } from 'react-bootstrap';
     
-class Clients extends Component {
+class ClientInformations extends Component {
     constructor() {
         super();
-        this.state = { clients: [], loading: true};
+        this.state = { client: [], loading: true};
     }
     
     componentDidMount() {
-        this.getClients();
+        this.getClient();
     }
     
-    getClients() {
+    getClient() {
        axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
-       axios.get(`/api/client`).then(clients => {
-           this.setState({ clients: clients.data, loading: false})
+       axios.get(`client/` + id).then(client => {
+           this.setState({ client: client.data, loading: false})
        })
-    }
-
-    deleteClientById(id, event) {
-        event.preventDefault();
-        axios.delete(`/api/client/delete/`+ id).then(res => {
-            this.getClients();
-            const clientsUpdate = $this.getState.clients.filter(client => client.id !== id);
-            $this.setState({clients: clientsUpdate});
-        })
-        .catch((error) => {
-            console.log(error.response)
-        });
     }
     
     render() {
@@ -41,8 +26,7 @@ class Clients extends Component {
                 <section className="row-section">
                     <div className="container">
                         <div className="row">
-                            <h2 className="text-center"><span>List of clients</span>Created with <i
-                                className="fa fa-heart"></i> by xav</h2>
+                            <h2 className="text-center">Client informations</h2>
                         </div>
                         {loading ? (
                             <div className={'row text-center'}>
@@ -63,16 +47,13 @@ class Clients extends Component {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        { this.state.clients.map(client =>
-                                            <tr key={client.id}>
-                                            <td><Link className={"nav-link"} to={`/client/${client.id}`}>{client.name}</Link></td>
-                                            <td>{client.firstname}</td>
-                                            <td>{client.email}</td>
-                                            <td>{client.adress}</td>
-                                            <td>{client.phone}</td>
-                                            <td><Button as="input" type="reset" value="Reset" onClick={(event) => this.deleteClientById(client.id, event)}/></td>
+                                            <tr key={this.state.client.id}>
+                                            <td>{this.state.client.name}</td>
+                                            <td>{this.state.client.firstname}</td>
+                                            <td>{this.state.client.email}</td>
+                                            <td>{this.state.client.adress}</td>
+                                            <td>{this.state.client.phone}</td>
                                             </tr>
-                                        )}
                                         </tbody>
                                     </Table>
                                 </div>
@@ -84,4 +65,4 @@ class Clients extends Component {
         )
     }
 }
-export default Clients;
+export default ClientInformations;
