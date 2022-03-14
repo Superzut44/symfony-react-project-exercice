@@ -25,7 +25,7 @@ class ClientController extends AbstractController
         //     'controller_name' => 'Xav',
         // ]);
 
-        return $this->json($clientRepository->findAll(), 200, ['groups' => 'client:read']);
+        return $this->json($clientRepository->findAll(), 200,[], ['groups' => 'client:read']);
     }
 
     // /**

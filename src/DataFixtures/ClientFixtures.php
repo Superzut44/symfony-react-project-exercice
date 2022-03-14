@@ -89,7 +89,8 @@ class ClientFixtures extends Fixture
             $client->setFirstname($clientData['firstname']);
             $client->setEmail($clientData['email']);
             $client->setAdress($clientData['adress']);
-            $client->setPhone($clientData['phone']);
+            $client->setPhone($clientData['phone'] . $key);
+            $this->addReference('client_' . $key, $client);
 
             $manager->persist($client);
         };

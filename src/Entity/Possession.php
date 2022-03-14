@@ -12,21 +12,22 @@ class Possession
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups("client:read")]
     private $id;
 
     #[ORM\ManyToOne(targetEntity: Client::class, inversedBy: 'possessions')]
     private $client;
 
     #[ORM\Column(type: 'string', length: 40)]
-    #[Groups(["client:read"])]
+    #[Groups("client:read")]
     private $name;
 
     #[ORM\Column(type: 'float')]
-    #[Groups(["client:read"])]
+    #[Groups("client:read")]
     private $value;
 
     #[ORM\Column(type: 'string', length: 40)]
-    #[Groups(["client:read"])]
+    #[Groups("client:read")]
     private $type;
 
     public function getId(): ?int

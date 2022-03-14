@@ -14,30 +14,31 @@ class Client
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["client:read"])]
+    #[Groups("client:read")]
     private $id;
 
     #[ORM\Column(type: 'string', length: 40)]
-    #[Groups(["client:read"])]
+    #[Groups("client:read")]
     private $name;
 
     #[ORM\Column(type: 'string', length: 40)]
-    #[Groups(["client:read"])]
+    #[Groups("client:read")]
     private $firstname;
 
     #[ORM\Column(type: 'string', length: 40)]
-    #[Groups(["client:read"])]
+    #[Groups("client:read")]
     private $email;
 
     #[ORM\Column(type: 'string', length: 40)]
-    #[Groups(["client:read"])]
+    #[Groups("client:read")]
     private $adress;
 
     #[ORM\Column(type: 'string', length: 40)]
-    #[Groups(["client:read"])]
+    #[Groups("client:read")]
     private $phone;
 
-    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Possession::class)]
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Possession::class, orphanRemoval:true)]
+    #[Groups("client:read")]
     private $possessions;
 
     public function __construct()
