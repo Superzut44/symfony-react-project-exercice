@@ -22,7 +22,7 @@ export default function ClientInformations() {
                      <div className="row">
                          <h2 className="text-center">Client informations</h2>
                      </div>
-                      { client.name ? (
+                      { !client.name ? (
                          <div className={'row text-center'}>
                              <span className="fa fa-spin fa-spinner fa-4x"></span>
                          </div>
