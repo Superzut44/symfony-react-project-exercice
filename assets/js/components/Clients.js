@@ -65,7 +65,7 @@ class Clients extends Component {
                                         <tbody>
                                         { this.state.clients.map(client =>
                                             <tr key={client.id}>
-                                            <td><Link className={"nav-link"} to={`/client/${client.id}`}>{client.name}</Link></td>
+                                            <td><Link className={"link"} to={`/client/${client.id}`}>{client.name}</Link></td>
                                             <td>{client.firstname}</td>
                                             <td>{client.email}</td>
                                             <td>{client.adress}</td>
