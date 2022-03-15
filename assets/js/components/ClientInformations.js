@@ -11,7 +11,7 @@ export default function ClientInformations() {
 
     useEffect(() => {
         axios
-        .get(`https://127.0.0.1:8000/client/${ id }`)
+        .get(`https://localhost:8000/client/${ id }`)
         .then((resp) => {
             setClient(resp.data);
             setPossessions(resp.data.possessions);
