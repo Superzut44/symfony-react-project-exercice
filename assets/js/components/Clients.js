@@ -4,6 +4,7 @@ import { Table, Button } from 'react-bootstrap';
 import {
     Link
 } from 'react-router-dom';
+import CurrentAge from '../services/CurrentAge';
     
 class Clients extends Component {
     constructor() {
@@ -59,7 +60,7 @@ class Clients extends Component {
                                             <th>Email</th>
                                             <th>Adress</th>
                                             <th>Phone</th>
-                                            <th>birthDate</th>
+                                            <th>Age</th>
                                             <th></th>
                                             </tr>
                                         </thead>
@@ -67,11 +68,11 @@ class Clients extends Component {
                                         { this.state.clients.map(client =>
                                             <tr key={client.id}>
                                             <td><Link className={"link"} to={`/client/${client.id}`}>{client.name}</Link></td>
-                                            <td>{client.firstname}</td>
-                                            <td>{client.email}</td>
-                                            <td>{client.adress}</td>
-                                            <td>{client.phone}</td>
-                                            <td>{client.birthDate}</td>
+                                            <td>{ client.firstname }</td>
+                                            <td>{ client.email }</td>
+                                            <td>{ client.adress }</td>
+                                            <td>{ client.phone }</td>
+                                            <td>{ CurrentAge(client.birthDate) }</td>
                                             <td><Button as="input" type="reset" value="Reset" onClick={(event) => this.deleteClientById(client.id, event)}/></td>
                                             </tr>
                                         )}
