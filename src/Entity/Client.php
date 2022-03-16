@@ -41,6 +41,10 @@ class Client
     #[Groups("client:read")]
     private $possessions;
 
+    #[ORM\Column(type: 'datetime')]
+    #[Groups("client:read")]
+    private $birthDate;
+
     public function __construct()
     {
         $this->possessions = new ArrayCollection();
@@ -137,6 +141,18 @@ class Client
                 $possession->setClient(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getBirthDate(): ?\DateTimeInterface
+    {
+        return $this->birthDate;
+    }
+
+    public function setBirthDate(\DateTimeInterface $birthDate): self
+    {
+        $this->birthDate = $birthDate;
 
         return $this;
     }

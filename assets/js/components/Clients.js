@@ -59,6 +59,7 @@ class Clients extends Component {
                                             <th>Email</th>
                                             <th>Adress</th>
                                             <th>Phone</th>
+                                            <th>birthDate</th>
                                             <th></th>
                                             </tr>
                                         </thead>
@@ -70,6 +71,7 @@ class Clients extends Component {
                                             <td>{client.email}</td>
                                             <td>{client.adress}</td>
                                             <td>{client.phone}</td>
+                                            <td>{client.birthDate}</td>
                                             <td><Button as="input" type="reset" value="Reset" onClick={(event) => this.deleteClientById(client.id, event)}/></td>
                                             </tr>
                                         )}

@@ -2,9 +2,10 @@
 
 namespace App\DataFixtures;
 
-use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Persistence\ObjectManager;
+use DateTime;
 use App\Entity\Client;
+use Doctrine\Persistence\ObjectManager;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 
 class ClientFixtures extends Fixture
 {
@@ -89,7 +90,8 @@ class ClientFixtures extends Fixture
             $client->setFirstname($clientData['firstname']);
             $client->setEmail($clientData['email']);
             $client->setAdress($clientData['adress']);
-            $client->setPhone($clientData['phone'] . $key);
+            $client->setPhone($clientData['phone']);
+            $client->setBirthDate(new DateTime('1977-10-21'));
             $this->addReference('client_' . $key, $client);
 
             $manager->persist($client);
