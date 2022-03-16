@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Table } from 'react-bootstrap';
+import CurrentAge from '../services/CurrentAge';
 
 export default function ClientInformations() {
 
@@ -39,6 +40,7 @@ export default function ClientInformations() {
                                         <th>Email</th>
                                         <th>Adress</th>
                                         <th>Phone</th>
+                                        <th>Age</th>
                                         <th></th>
                                         </tr>
                                     </thead>
@@ -49,6 +51,7 @@ export default function ClientInformations() {
                                     <td>{client.email}</td>
                                     <td>{client.adress}</td>
                                     <td>{client.phone}</td>
+                                    <td>{ CurrentAge(client.birthDate) }</td>
                                     </tr>
                                 </tbody>
                                 </Table>
