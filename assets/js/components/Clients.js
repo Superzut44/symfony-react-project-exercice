@@ -5,11 +5,12 @@ import {
     Link
 } from 'react-router-dom';
 import CurrentAge from '../services/CurrentAge';
+import MyVerticallyCenteredModal from './MyVerticallyCenteredModal';
     
 class Clients extends Component {
     constructor() {
         super();
-        this.state = { clients: [], loading: true};
+        this.state = { clients: [], loading: true, modalShow: false};
     }
     
     componentDidMount() {
@@ -34,6 +35,11 @@ class Clients extends Component {
             console.log(error.response)
         });
     }
+
+    changeModalShow(bool) {
+        this.setState({modalShow: bool});
+    }
+
     
     render() {
         const loading = this.state.loading;
@@ -77,7 +83,9 @@ class Clients extends Component {
                                             </tr>
                                         )}
                                         <tr>
-                                            <td><Button as="input" type="button" value="add" onClick={(event) => console.log("ok")} /></td>
+                                            <td>
+                                                <Button variant="success" onClick={() => this.changeModalShow(true)}>New Client</Button>
+                                            </td>
                                         </tr>
                                         </tbody>
                                     </Table>
@@ -86,6 +94,7 @@ class Clients extends Component {
                         )}
                     </div>
                 </section>
+                <MyVerticallyCenteredModal show={this.state.modalShow} onHide={() => this.changeModalShow(false)} />
             </>
         )
     }
