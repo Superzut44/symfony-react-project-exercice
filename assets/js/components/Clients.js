@@ -76,6 +76,9 @@ class Clients extends Component {
                                             <td><Button as="input" type="reset" value="Reset" onClick={(event) => this.deleteClientById(client.id, event)}/></td>
                                             </tr>
                                         )}
+                                        <tr>
+                                            <td><Button as="input" type="button" value="add" onClick={(event) => console.log("ok")} /></td>
+                                        </tr>
                                         </tbody>
                                     </Table>
                                 </div>
