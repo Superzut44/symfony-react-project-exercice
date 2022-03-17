@@ -2,12 +2,15 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\Client;
 use App\Repository\ClientRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ClientController extends AbstractController
@@ -109,5 +112,32 @@ class ClientController extends AbstractController
     ): Response {
 
         return $this->json($client, 200,[], ['groups' => 'client:read']);
+    }
+
+    #[Route('/new', name: 'new', methods: ['POST'])]
+    public function new(Request $request, SerializerInterface $serializer, EntityManagerInterface $em, ValidatorInterface $validator): Response
+    {
+        $jsonRecu = $request->getContent();
+
+        try {
+            $client = $serializer->deserialize($jsonRecu,
+            Client::class, 'json');
+
+            $errors = $validator->validate($client);
+
+            if(count($errors) > 0) {
+                return $this->json($errors, 400);
+            }
+
+            $em->persist($client);
+            $em->flush();
+
+            return $this->json($client, 201, [], ['groups' => 'client:read']);
+        } catch (NotEncodableValueException $e) {
+            return $this->json([
+                'status' => 400,
+                'message' => $e->getMessage()
+            ], 400);
+        }
     }
 }
